@@ -1,6 +1,7 @@
-import number, {constants} from "./number.js"
-import variable from "./variable.js"
-import sum from "./sum.js"
+import number, {constants} from "./number.js";
+import variable from "./variable.js";
+import sum from "./sum.js";
+import multiply from "./multiply.js";
 
 /*
 the del object is an agregator for factory functions which
@@ -48,7 +49,8 @@ const del = {
   number,
   constants,
   variable, 
-  sum
+  sum,
+  multiply
 }
 
 

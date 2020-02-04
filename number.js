@@ -1,7 +1,9 @@
-let number = (value, name) => {
+import DFO from "./DFO.js";
+
+let number = (value) => {
   return {
+    __proto__: DFO,
     id: "number",
-    name: name,
     value,
     
     get factor() {
@@ -21,27 +23,36 @@ let number = (value, name) => {
 
     toString(handleMinus = true) {
       let res = ((handleMinus && this.signum == -1) ? '-' : '');
-
-      if (this.name) return res + this.name 
-      else return res + this.factor
+      return res + this.factor;
     },
     
     derivative() {
-      constants.zero;
+      return constants.zero;
     },
 
     opposite() {
-      let obj = {...this}
+      let obj = {...this};
       obj.value *= -1;
       return obj;
     },
   }
 }
 
+let namedNumber = (value, name) => {
+  let ret = number(value);
+  ret.name = name;
+  ret.id = "namedNumber";
+  ret.toString = function (handleMinus = true) {
+    let res = ((handleMinus && this.signum == -1) ? '-' : '');
+    return res + this.name;
+  }.bind(ret);
+  return ret;
+}
+
 const constants = {
   zero: number(0),
   unit: number(1),
-  pi: number(Math.pi, '\u03C0'),
+  pi: namedNumber(Math.pi, '\u03C0'),
 }
 
 export {number as default, constants};

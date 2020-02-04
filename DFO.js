@@ -1,15 +1,18 @@
-const errorMessage = "Error! This function must be overwritten!";
+
+function errorMessage(id, name) {
+  return "Error! function " + name + " in " + id + " not overwritten!";
+}
 
 export default  {
   id: "null",
   _factor: null,
-  get operands() {return Set();},
+  get operands() {return Array();},
   get arguments() {return Set();},
   evaluate(obj) { 
-    throw errorMessage;
+    throw errorMessage(this.id, "evaluate");
   },
   derivative(arg) {
-    throw errorMessage;
+    throw errorMessage(this.id, "derivative");
   },
   get factor() {
     return this._factor.factor;
@@ -18,7 +21,7 @@ export default  {
     return this._factor.signum;
   },
   toString(handleMinus = true) {
-    throw errorMessage;
+    throw errorMessage(this.id, "toString");
   },
   opposite() {
     let obj = {...this}

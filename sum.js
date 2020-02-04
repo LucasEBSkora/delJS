@@ -1,13 +1,16 @@
 import {constants} from "./number.js"
 import DFO from "./DFO.js"
 
-export default (...args) => {
+const sum = (...args) => {
   let ops;
   if (args.length == 0) {
-    return constants.null
-  } else if (Array.isArray(args[0]) && args.length == 1) {
+    return constants.null;
+  } else if (Array.isArray(args[0]) ) {
     ops = args[0];
   } else ops = args;
+
+  
+
 
   return {
     __proto__: DFO,
@@ -35,13 +38,17 @@ export default (...args) => {
           res += _op.toString(true); 
           
         } else {
-          console.log(res)
           res += ((_op.signum == -1) ? ' - ' : ' + ') + _op.toString(false)}
         return res;
-        }
-      , '');
+        },
+       '');
+    },
 
-    }
+    derivative(arg) {
+      return sum(this._operands.map((_op) => _op.derivative(arg)));
+    },
     
   }
 }
+
+export default sum;

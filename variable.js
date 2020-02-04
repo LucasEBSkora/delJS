@@ -22,7 +22,7 @@ export default (name, factor = constants.unit) => {
     },
 
     derivative(arg) {
-      (arg.name == this.name) ? this._factor : constants.null;
+      return (arg.name == this.name) ? this._factor : constants.null;
     },
     
   }
