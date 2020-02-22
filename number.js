@@ -6,11 +6,11 @@ let number = (value) => {
     id: "number",
     value,
     
-    get factor() {
+    get abs() {
       return Math.abs(this.value);
     },
 
-    get signum() {
+    get negative() {
       return Math.sign(this.value);
     },
 
@@ -22,8 +22,7 @@ let number = (value) => {
     },
 
     toString(handleMinus = true) {
-      let res = ((handleMinus && this.signum == -1) ? '-' : '');
-      return res + this.factor;
+      return ((handleMinus && this.negative == -1) ? '-' : '') + this.abs;
     },
     
     derivative() {
@@ -43,15 +42,15 @@ let namedNumber = (value, name) => {
   ret.name = name;
   ret.id = "namedNumber";
   ret.toString = function (handleMinus = true) {
-    let res = ((handleMinus && this.signum == -1) ? '-' : '');
-    return res + this.name;
+    return ((handleMinus && this.signum == -1) ? '-' : '') + this.name;
   }.bind(ret);
   return ret;
 }
 
 const constants = {
   zero: number(0),
-  unit: number(1),
+  one: number(1),
+  minusOne: number(-1),
   pi: namedNumber(Math.pi, '\u03C0'),
 }
 

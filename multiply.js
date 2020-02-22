@@ -10,7 +10,19 @@ const multiply = (...args) => {
     ops = args[0];
   } else ops = args;
 
-  let f = 1;
+  let accum = 1;
+  ops = ops.filter((op) => {
+    if (op.id == "number") {
+      accum *= op.value;
+      return false;
+    } 
+
+    return true;
+  })
+
+  
+  if (accum == 0) return constants.zero;
+  else if (accum != 1) ops.unshift(number(accum));
 
   //TODO: simplifications
 
@@ -33,23 +45,21 @@ const multiply = (...args) => {
       let terms = [];
       
       this._ops.forEach((term, ind, arr) => {
+        //copies the array
         let narr = [...arr];
+        //makes the current index be its derivative
         narr[ind] = term.derivative(arg);
+        //makes a new term with the multiplication
         terms[ind] = multiply(narr);
       });
 
       return sum(terms);
     },
-    _factor: f,
-    get factor() {
-      return Math.abs(this._factor);
-    },
-    get signum() {
-      return Math.sign(this._factor);
-    },
+
     toString(handleMinus = true) {
-      let ret = (this.signum == -1) ? '-' : '';
-      ret += (this.factor != 1) ? this.factor :  '';
+      
+      let ret = '';
+      
       this._ops.forEach((op) => {
         ret += '(' + op.toString() + ')'; 
       });
