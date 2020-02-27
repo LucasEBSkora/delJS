@@ -27,6 +27,7 @@ const sum = (...args) => {
 
 
   if (ops.length == 0) return constants.zero;
+  else if (ops.length == 1) return ops[0];
   return {
     __proto__: DFO,
     id: "sum",
@@ -55,6 +56,7 @@ const sum = (...args) => {
           res += _op.toString(true); 
           
         } else {
+          console.log(_op);
           res += ((_op.negative) ? ' - ' : ' + ') + _op.toString(false)}
         return res;
         },
@@ -63,7 +65,7 @@ const sum = (...args) => {
 
     derivative(arg) {
       return sum(this._operands.map(_op => _op.derivative(arg)));
-    },
+    }
     
   }
 }

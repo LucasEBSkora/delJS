@@ -20,6 +20,15 @@ export default (name) => {
       else if (this.negative) return constants.minusOne;
       else return constants.one;
     },
+
+    equals(dfo) {
+      return (dfo.id == this.id) && 
+        (dfo.name == this.name);
+    },
+
+    summable(dfo) {
+      return this.equals(dfo);
+    }
     
   }
 }

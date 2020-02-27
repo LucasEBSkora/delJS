@@ -29,11 +29,21 @@ let number = (value) => {
       return constants.zero;
     },
 
-    opposite() {
+    get opposite() {
       let obj = {...this};
       obj.value *= -1;
       return obj;
     },
+
+    equals(dfo) {
+      return (dfo.id == "number" || dfo.id == "namedNumber") && 
+        (dfo.value == this.value);
+    },
+  
+    summable(dfo) {
+      return (dfo.id == this.id);
+    }
+      
   }
 }
 

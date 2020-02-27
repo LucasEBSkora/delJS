@@ -20,10 +20,13 @@ const multiply = (...args) => {
     return true;
   })
 
+
   
   if (accum == 0) return constants.zero;
   else if (accum != 1) ops.unshift(number(accum));
 
+
+  if (ops.length == 1) return ops[0];
   //TODO: simplifications
 
   return {
