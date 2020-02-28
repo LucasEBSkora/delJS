@@ -25,9 +25,15 @@ export default {
   derivative(arg) {
     throw errorMessage(this.id, "derivative");
   },
-  toString(handleMinus = true) {
+  
+  toString() {
     throw errorMessage(this.id, "toString");
   },
+
+  toHTML() {
+    throw errorMessage(this.id, "toHTML");
+  },
+
   get opposite() {
     let obj = {...this}
     obj._negative = !obj._negative;
@@ -49,6 +55,7 @@ export default {
   //for exemple, 3*sen(x) is summable with 5*sen(x)
   summable(dfo) {
     throw errorMessage(this.id, "equals");
-  }
+  },
+
 
 }

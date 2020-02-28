@@ -35,6 +35,10 @@ export default (op, neg = false) => {
       return ((this.negative && handleMinus) ? '-' : '' ) + "sin(" + this.op.toString() + ")";
     },
 
+    toHTML(handleMinus = true) {
+      return ((this.negative && handleMinus) ? '-' : '' ) + "sin(" + this.op.toHTML() + ")";
+    },
+
     derivative(arg) {
       return multiply(cos(this.op, this.negative), this.op.derivative(arg));
     },

@@ -3,6 +3,7 @@ import variable from "./variable.js";
 import sum from "./sum.js";
 import multiply from "./multiply.js";
 import trig from "./trig/trig.js";
+import divide from "./divide.js";
 /*
 the del object is an agregator for factory functions which
 generate differentiable function objects (DFO), defined in DFO.js.
@@ -49,7 +50,8 @@ const del = {
   variable, 
   sum,
   multiply,
-  trig
+  trig,
+  divide
 }
 
 

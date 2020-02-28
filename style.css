@@ -7,3 +7,18 @@ article {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
   
 }
+
+.delJS-divide {
+  display: inline;
+  
+}
+
+.delJS-divide-numerator {
+  display: inline-block;
+  border-bottom: 1px solid black;
+}
+
+.delJS-divide-denominator {
+  display: block;
+  border-top: 1px black;
+}

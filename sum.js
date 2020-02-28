@@ -63,6 +63,22 @@ const sum = (...args) => {
        '');
     },
 
+    toHTML() {
+
+      return this._operands.reduce((res, _op, index) => {
+        
+        if (index == 0) {
+          
+          res += _op.toHTML(true); 
+          
+        } else {
+          console.log(_op);
+          res += ((_op.negative) ? ' - ' : ' + ') + _op.toHTML(false)}
+        return res;
+        },
+       '');
+    },
+
     derivative(arg) {
       return sum(this._operands.map(_op => _op.derivative(arg)));
     }

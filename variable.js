@@ -15,6 +15,11 @@ export default (name) => {
       return ((this.negative && handleMinus) ? '-' : '' ) + this.name;
     },
 
+    toHTML(handleMinus = true) {
+      return ((this.negative && handleMinus) ? '-' : '' ) + this.name;
+    },
+
+
     derivative(arg) {
       if (arg.name != this.name) return constants.zero;
       else if (this.negative) return constants.minusOne;

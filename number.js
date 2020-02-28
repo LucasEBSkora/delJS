@@ -11,7 +11,7 @@ let number = (value) => {
     },
 
     get negative() {
-      return Math.sign(this.value);
+      return Math.sign(this.value) == -1;
     },
 
     get operands() {return Set()},
@@ -22,7 +22,11 @@ let number = (value) => {
     },
 
     toString(handleMinus = true) {
-      return ((handleMinus && this.negative == -1) ? '-' : '') + this.abs;
+      return ((handleMinus && this.negative) ? '-' : '') + this.abs;
+    },
+
+    toHTML(handleMinus = true) {
+      return ((handleMinus && this.negative) ? '-' : '') + this.abs;
     },
     
     derivative() {
@@ -52,6 +56,9 @@ let namedNumber = (value, name) => {
   ret.name = name;
   ret.id = "namedNumber";
   ret.toString = function (handleMinus = true) {
+    return ((handleMinus && this.signum == -1) ? '-' : '') + this.name;
+  }.bind(ret);
+  ret.toHTML = function (handleMinus = true) {
     return ((handleMinus && this.signum == -1) ? '-' : '') + this.name;
   }.bind(ret);
   return ret;

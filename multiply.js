@@ -1,4 +1,4 @@
-import {constants} from "./number.js";
+import number, {constants} from "./number.js";
 import sum from "./sum.js";
 import DFO from "./DFO.js";
 
@@ -68,7 +68,17 @@ const multiply = (...args) => {
       });
 
       return ret;
-    }, 
+    },
+    
+    toHTML(handleMinus = true) {
+      let ret = '';
+      
+      this._ops.forEach((op) => {
+        ret += '(' + op.toHTML() + ')'; 
+      });
+
+      return ret;
+    }
   }
 };
 
